@@ -2,7 +2,9 @@
 
 mod arrays;
 mod bound;
+mod bson;
 mod chrono;
+mod complex_flattened_type;
 mod concrete_generic;
 mod docs;
 mod enum_flattening;
@@ -25,6 +27,7 @@ mod issue_168;
 mod issue_232;
 mod issue_308;
 mod issue_317;
+mod issue_338;
 mod issue_70;
 mod issue_80;
 mod leading_colon;

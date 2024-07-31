@@ -78,7 +78,7 @@
 //! | bigdecimal-impl    | Implement `TS` for types from *bigdecimal*                                                                                                                                                                |
 //! | url-impl           | Implement `TS` for types from *url*                                                                                                                                                                       |
 //! | uuid-impl          | Implement `TS` for types from *uuid*                                                                                                                                                                      |
-//! | bson-uuid-impl     | Implement `TS` for types from *bson*                                                                                                                                                                      |
+//! | bson-uuid-impl     | Implement `TS` for *bson::oid::ObjectId* and *bson::uuid*                                                                                                                                                 |
 //! | bytes-impl         | Implement `TS` for types from *bytes*                                                                                                                                                                     |
 //! | indexmap-impl      | Implement `TS` for types from *indexmap*                                                                                                                                                                  |
 //! | ordered-float-impl | Implement `TS` for types from *ordered_float*                                                                                                                                                             |
@@ -896,11 +896,11 @@ impl<K: TS, V: TS, H> TS for HashMap<K, V, H> {
     }
 
     fn name() -> String {
-        format!("{{ [key: {}]: {} }}", K::name(), V::name())
+        format!("{{ [key in {}]?: {} }}", K::name(), V::name())
     }
 
     fn inline() -> String {
-        format!("{{ [key: {}]: {} }}", K::inline(), V::inline())
+        format!("{{ [key in {}]?: {} }}", K::inline(), V::inline())
     }
 
     fn visit_dependencies(v: &mut impl TypeVisitor)
@@ -1005,6 +1005,9 @@ impl_primitives! { ordered_float::OrderedFloat<f32> => "number" }
 
 #[cfg(feature = "ordered-float-impl")]
 impl_primitives! { ordered_float::OrderedFloat<f64> => "number" }
+
+#[cfg(feature = "bson-uuid-impl")]
+impl_primitives! { bson::oid::ObjectId => "string" }
 
 #[cfg(feature = "bson-uuid-impl")]
 impl_primitives! { bson::Uuid => "string" }

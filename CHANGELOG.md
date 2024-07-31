@@ -1,7 +1,12 @@
 # master
 ### Breaking
 ### Features
+
+- The `bson-uuid-impl` feature now supports `bson::oid::ObjectId` as well ([#340](https://github.com/Aleph-Alpha/ts-rs/pull/340))
+
 ### Fixes
+
+- Properly handle block doc comments ([#342](https://github.com/Aleph-Alpha/ts-rs/pull/342))
 
 # 9.0.1
 ### Fixes
